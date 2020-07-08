@@ -4,8 +4,15 @@ import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import Recent from '@material-ui/icons/Restore';
 import Todo from '@material-ui/icons/Notes';
-import Logout from '@material-ui/icons/Create';
+import Create from '@material-ui/icons/Create';
+import Link from "@material-ui/core/Link";
+// react router component
 
+import  {
+    BrowserRouter as Router,
+    Link as RouterLink
+  } from "react-router-dom";
+    
 const useStyles = makeStyles({
     root : {
         width : 100 + "%",
@@ -14,23 +21,32 @@ const useStyles = makeStyles({
     }
 })
 
+
+
 function Footer (props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     return (
         <footer>
-            <BottomNavigation
+           <Router>
+           <BottomNavigation
                 value={value}
                 onChange={(event, newValue) => {
                     setValue(newValue)
                 }}
-                showLabels
                 className={classes.root}
             >
-                <BottomNavigationAction label="Recent" icon={<Recent/>}/>
-                <BottomNavigationAction label="Todo" icon={<Todo/>}/>
-                <BottomNavigationAction label="Create" icon={<Logout/>}/>
+                <Link  component={RouterLink} to="/">
+                    <BottomNavigationAction  icon={<Recent/>}/>
+                </Link>
+                <Link  component={RouterLink} to="/todo">
+                    <BottomNavigationAction icon={<Todo/>}/>
+                </Link>
+                <Link  component={RouterLink} to="/create">
+                    <BottomNavigationAction icon={<Create/>}/>
+                </Link>
             </BottomNavigation>
+           </Router>
         </footer>
     )
 }
