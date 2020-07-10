@@ -24,30 +24,40 @@ const useStyles = makeStyles({
 
 
 function Footer (props) {
+
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-    return (
-        <footer>
-           <Router>
-           <BottomNavigation
-                value={value}
-                onChange={(event, newValue) => {
-                    setValue(newValue)
-                }}
-                className={classes.root}
-            >
-                <Link  component={RouterLink} to="/">
-                    <BottomNavigationAction  icon={<Recent/>}/>
-                </Link>
-                <Link  component={RouterLink} to="/todo">
-                    <BottomNavigationAction icon={<Todo/>}/>
-                </Link>
-                <Link  component={RouterLink} to="/create">
-                    <BottomNavigationAction icon={<Create/>}/>
-                </Link>
-            </BottomNavigation>
-           </Router>
-        </footer>
+    return(
+        <BottomNavigation
+            value={value}
+            onChange={(event, newValue) => {
+                setValue(newValue)
+            }}
+            className={classes.root}
+        >
+            <Link component={RouterLink} to="/">
+                <BottomNavigationAction
+                    icon={<Recent/>}
+                    label="Recent"
+                />
+            </Link>
+            <Link component={RouterLink} to="/todo">
+                <BottomNavigationAction
+                    icon={<Todo/>}
+                    component={props.router}
+                    to="/todo"
+                    label="Todo"
+                />
+            </Link>
+            <Link component={RouterLink} to="/create">
+                <BottomNavigationAction
+                    icon={<Create/>}
+                    component={props.router}
+                    to="/create"
+                    label="Create"
+                />
+            </Link>
+        </BottomNavigation>
     )
 }
 
