@@ -27,8 +27,6 @@ const Main = () => {
                             <Default/>
                         </Route>
                     </Switch>
-
-
             </Container>
             <BottomNavigationComponent/>
         </Router>

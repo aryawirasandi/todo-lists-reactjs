@@ -7,7 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const buttonStyle = makeStyles({
     root : {
-        marginRight : 1 + "em"
+        marginRight : 1 + "em",
+        marginBottom : 1 + "em"
     }
 })
 
