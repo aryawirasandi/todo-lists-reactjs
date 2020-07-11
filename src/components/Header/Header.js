@@ -3,9 +3,7 @@ import Navbar from "../Navbar/Navbar";
 const Header = () => {
     return (
         <header>
-            <Navbar
-                name="Todo Lists App"
-            />
+            <Navbar/>
         </header>
     )
 }

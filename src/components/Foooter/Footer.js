@@ -1,13 +1,10 @@
 import React from 'react';
 
-
-
-function Footer () {
-
+const Footer = props => {
     return (
-        <footer>
-
-        </footer>
+        <div>
+            this is footer
+        </div>
     )
 }
 
