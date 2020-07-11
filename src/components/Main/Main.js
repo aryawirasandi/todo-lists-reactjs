@@ -1,26 +1,42 @@
 import React from 'react';
-import Card from "../Card/Card";
 import Container from "@material-ui/core/Container"
-import { makeStyles } from '@material-ui/core';
+import FormTodo from "../Form/Form";
+import Todo from "../Todo/Todo";
 
-const useStyles = makeStyles((theme) => ({
-    Background : {
-        backgroundColor : "red",
-        color : "white"
-    }
-  }))
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+  } from "react-router-dom";
+import BottomNavigationComponent from "../BottomNavigation/BottomNavigationComponent";
 
 const Main = () => {
-    const classes = useStyles();
     return (
         <main>
+        <Router>
             <Container>
-                <Card className={ classes.Background } >
-                    hahah
-                </Card>
+                    <Switch>
+                        <Route path="/create">
+                            <FormTodo/>
+                        </Route>
+                        <Route path="/todo">
+                            <Todo heading="Learning react JS"
+                                  description="Learning react JS with OSA at discord"/>
+                        </Route>
+                        <Route path="/">
+                            <Default/>
+                        </Route>
+                    </Switch>
             </Container>
+            <BottomNavigationComponent/>
+        </Router>
         </main>
     )
+}
+
+
+function Default(){
+    return <h2>This is Default</h2>
 }
 
 export default Main;
